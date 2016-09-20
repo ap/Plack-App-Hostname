@@ -68,7 +68,7 @@ sub call {
 	my $host = $env->{'HTTP_HOST'};
 
 	my $app = defined $host
-		? $self->matching( map { s/:$env->{'SERVER_PORT'}\z//; $_ } $host ) || $self->default_app
+		? ( $host =~ s/:$env->{'SERVER_PORT'}\z//, $self->matching( $host ) || $self->default_app )
 		: $self->missing_header_app;
 
 	return 'CODE' eq ref $app ? &$app : $app || $sadtrombone;
