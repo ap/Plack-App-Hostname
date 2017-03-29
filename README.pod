@@ -1,1 +1,1 @@
-lib/Plack/App/Hostname.pod
+lib/Plack/App/Hostname.pm
