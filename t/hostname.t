@@ -1,10 +1,11 @@
 use strict;
 use warnings;
 
-use Test::More 0.88; # for done_testing
 use Plack::App::Hostname;
 use Plack::Test;
 use HTTP::Request::Common;
+
+use Test::More tests => 23;
 
 my $yippie = 'we will serve one and all';
 my $yay_app = sub { [ 200, [], [ $yippie ] ] };
@@ -119,5 +120,3 @@ test_psgi app => $map, client => sub {
 	$res = $cb->( GET '/' );
 	is $res->code, 400, '... and the handling can be removed again';
 };
-
-done_testing;
