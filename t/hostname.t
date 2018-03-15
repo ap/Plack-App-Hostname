@@ -19,12 +19,12 @@ test_psgi app => $map, client => sub {
 
 	# this smelly goop is necessary because Plack::Test and HTTP::Message::PSGI
 	# both insist on helping us out by defaulting HTTP_HOST to localhost
-	no warnings 'redefine';
+	{ no warnings qw( once redefine );
 	*HTTP::Request::to_psgi = sub {
 		my $env = HTTP::Message::PSGI::req_to_psgi( @_ );
 		delete $env->{'HTTP_HOST'} if 'localhost' eq $env->{'HTTP_HOST'};
 		$env;
-	};
+	} }
 
 	my $res;
 
