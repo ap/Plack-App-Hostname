@@ -5,7 +5,7 @@ use Plack::App::Hostname;
 use Plack::Test;
 use HTTP::Request::Common;
 
-use Test::More tests => 23;
+use Test::More tests => 24;
 
 my $yippie = 'we will serve one and all';
 my $yay_app = sub { [ 200, [], [ $yippie ] ] };
@@ -81,6 +81,9 @@ test_psgi app => $map, client => sub {
 
 	$res = $cb->( GET 'http://foo.bar.example.com/' );
 	is $res->content, '**.bar.example.com', '... and match in specificity order';
+
+	$res = $cb->( GET 'http://'.('foo.bar.baz.quux.qux.' x 3).'.boom.example.com/' );
+	is $res->code, 400, '... but the music stops at 16 zones deep';
 
 	####################################################################
 
