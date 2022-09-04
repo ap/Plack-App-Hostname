@@ -2,7 +2,7 @@ use 5.006; use strict; use warnings;
 
 package Plack::App::Hostname;
 
-our $VERSION = '1.001';
+our $VERSION = '1.002';
 
 BEGIN { require Plack::Component; our @ISA = 'Plack::Component' }
 use Plack::Util::Accessor qw( custom_matcher missing_header_app default_app );
