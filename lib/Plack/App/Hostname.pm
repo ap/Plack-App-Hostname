@@ -6,7 +6,7 @@ package Plack::App::Hostname;
 
 # ABSTRACT: Run multiple apps dispatched by the request Host header
 
-use parent 'Plack::Component';
+BEGIN { require Plack::Component; our @ISA = 'Plack::Component' }
 use Plack::Util::Accessor qw( custom_matcher missing_header_app default_app );
 
 sub map_hosts_to {
