@@ -1,5 +1,10 @@
-# PODNAME:  Plack::App::Hostname
-# ABSTRACT: Run multiple apps dispatched by the request Host header
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Plack::App::Hostname - Run multiple apps dispatched by the request Host header
 
 =head1 SYNOPSIS
 
@@ -175,3 +180,5 @@ flexible enough for complex cases either. I consider this a bad trade-off: you
 pay extra and gain little; mostly, you just pay extra.
 
 =back
+
+=cut
