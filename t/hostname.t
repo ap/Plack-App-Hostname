@@ -1,5 +1,4 @@
-use strict;
-use warnings;
+use strict; use warnings;
 
 use Plack::App::Hostname;
 use Plack::Test;
